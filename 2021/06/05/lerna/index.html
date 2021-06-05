@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="JavaScript,Vue2,Vue3,Vite,Webpack,node,react,算法">
+    <meta name="description" content="清风的个人博客，主要涉及到编程(JavaScript,Vue2,Vue3,Webpack,node),助于个人学习提升，分享学习过程">
+    <meta name="author" content="清风">
+    
+    <title>
+        
+            lerna |
+        
+        清风的博客
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"zh"};
+    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.3"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                清风的博客
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                主页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                文章
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">主页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">文章</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">lerna</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">清风</span>
+                        
+                            <span class="author-label">Lv2</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2021-06-05 11:14:53
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/NodeJS/">NodeJS</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/NodeJS/">NodeJS</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h3 id="基于Lerna搭建脚手架"><a href="#基于Lerna搭建脚手架" class="headerlink" title="基于Lerna搭建脚手架"></a>基于Lerna搭建脚手架</h3><ul>
+<li><p>创建文件夹 ;</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir xxx-cli</span><br><span class="line">cd xxx-cli</span><br></pre></td></tr></table></figure></li>
+<li><p>初始化npm项目</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init -y</span><br></pre></td></tr></table></figure></li>
+<li><p>安装lerna</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm i lerna -D</span><br><span class="line">npm i lerna -g</span><br></pre></td></tr></table></figure></li>
+<li><p>lerna初始化（初始化会创建一个lerna.json，初始化了git）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lerna init</span><br></pre></td></tr></table></figure></li>
+<li><p>手动创建.gitignore</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">排除文件</span><br><span class="line">.vscode</span><br><span class="line">.idea</span><br><span class="line">node_modules</span><br><span class="line">packages/**/node_modules</span><br></pre></td></tr></table></figure></li>
+<li><p>创建一个新的lerna管理的包</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lerna create XXX [loc]（loc自定义包位置，不填默认为第一个配置的包）</span><br></pre></td></tr></table></figure></li>
+<li><p>添加依赖</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">lerna add &lt;package&gt;[@version] [--dev] [--exact] [--peer]</span><br><span class="line"></span><br><span class="line">所有的目录都安装xxx-cli/utils</span><br><span class="line">lerna add @xxx-cli/utils</span><br><span class="line"></span><br><span class="line">清空所有的安装目录</span><br><span class="line">lerna clean</span><br><span class="line"></span><br><span class="line">特点目录安装依赖</span><br><span class="line">lerna add @xxx-cli/utils packages/core </span><br></pre></td></tr></table></figure></li>
+<li><p>开发测试</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">安装依赖并添加软链接</span><br><span class="line">lerna bootstrap</span><br><span class="line"></span><br><span class="line">链接依赖，相互依赖</span><br><span class="line">lerna link</span><br><span class="line"></span><br><span class="line">在所有的packages中运行</span><br><span class="line">lerna exec -- &lt;command&gt; [..args] </span><br><span class="line"></span><br><span class="line">删除所有的依赖</span><br><span class="line">lerna exec -- rm -rf ./node_modules</span><br><span class="line"></span><br><span class="line">删除xxx-cli/core的依赖</span><br><span class="line">lerna exec --scope @xxx-cli/core[包名] -- rm -rf ./node_modules</span><br><span class="line"></span><br><span class="line">执行所有的package中有test的script命令</span><br><span class="line">lerna run test</span><br></pre></td></tr></table></figure></li>
+<li><p>发布上线</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Bump版本号</span><br><span class="line">lerna version</span><br><span class="line"></span><br><span class="line">有哪些包发生了变化</span><br><span class="line">lerna changed</span><br><span class="line"></span><br><span class="line">查看diff</span><br><span class="line">lerna diff</span><br><span class="line"></span><br><span class="line">项目初始化</span><br><span class="line">git add .</span><br><span class="line">git commit -m &#x27;init&#x27;</span><br><span class="line">创建仓库</span><br><span class="line">关联远程链接</span><br><span class="line">git remote add origin git@gitee.com:....git</span><br><span class="line">查看远程分支版本</span><br><span class="line">git remote -V</span><br><span class="line">推送代码至远程分支，set-upstream设置默认选项</span><br><span class="line">git push origin master --set-upstream</span><br><span class="line"></span><br><span class="line">lerna publish</span><br></pre></td></tr></table></figure></li>
+<li><p>问题</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">代码为私有，设置以下</span><br><span class="line"> 1、&quot;publishConfig&quot;: &#123;</span><br><span class="line">    &quot;access&quot;: &quot;public&quot;</span><br><span class="line">  &#125;</span><br><span class="line"> 2、添加LICENSE.md</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="Lerna源码分析"><a href="#Lerna源码分析" class="headerlink" title="Lerna源码分析"></a>Lerna源码分析</h3><h5 id="本地调试方法"><a href="#本地调试方法" class="headerlink" title="本地调试方法"></a>本地调试方法</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm link // 发布需要npm unlink</span><br><span class="line"></span><br><span class="line">lerna,优于npm link</span><br><span class="line">&quot;@lerna/add&quot;: &quot;file:../../commands/add&quot;</span><br><span class="line">lerna项目在发布时publish会调用updateLocalDependency，把&quot;file:../../commands/add&quot;转为线上链接</span><br></pre></td></tr></table></figure>
+
+<h5 id="Event-Loop"><a href="#Event-Loop" class="headerlink" title="Event Loop"></a>Event Loop</h5><p>在JavaScript中，任务被分为两种，一种宏任务（MacroTask），一种微任务（MicroTask）。</p>
+<ul>
+<li><p>宏任务</p>
+<p>script全部代码、setTimeout、setInterval、setImmediate（浏览器暂时不支持，详情可见<a class="link"   target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/setImmediate" >MDN<i class="fas fa-external-link-alt"></i></a>）、I/O、UI Rendering</p>
+</li>
+<li><p>微任务</p>
+<p>Process.nextTick(Node独有)、Promise、Object.observe(废弃)、MutationObserver</p>
+</li>
+</ul>
+<p>JavaScript</p>
+<ul>
+<li>执行宏任务</li>
+<li>宏任务里面的放入执行栈（后进先出）中，依次执行，遇到微任务放入微任务队列，宏任务放入宏任务队列</li>
+<li>查看微任务队列，如果有任务，就采用先进先出的方式，将微任务放入执行栈中依次执行，直到微任务队列清空</li>
+<li>查看宏任务队列，循环到1</li>
+</ul>
+<p>Node</p>
+<ul>
+<li>当每个阶段完成后，如果存在nextTick队列，就会清空队列中的所有回调函数，并且优先于其他微任务（Micro）执行</li>
+</ul>
+<h5 id="Module-nodeModulePaths（生成node-modules所有可能的路径）"><a href="#Module-nodeModulePaths（生成node-modules所有可能的路径）" class="headerlink" title="Module._nodeModulePaths（生成node_modules所有可能的路径）"></a>Module._nodeModulePaths（生成node_modules所有可能的路径）</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">const paths = [];</span><br><span class="line">//从末尾开始</span><br><span class="line">for (let i = from.length - 1, p = 0, last = from.length; i &gt;= 0; --i) &#123;</span><br><span class="line">  // 获取当前code</span><br><span class="line">  const code = from.charCodeAt(i);</span><br><span class="line">  if (code === &#x27;/&#x27; || code === &#x27;\&#x27; || code === &#x27;:&#x27;) &#123;</span><br><span class="line">     if (p !== nmLen) // 不匹配node_modules</span><br><span class="line">       paths.push(from.slice(0, last) + &#x27;\\node_modules&#x27;);</span><br><span class="line">     last = i;</span><br><span class="line">     p = 0;</span><br><span class="line">  &#125; else if (p !== -1) &#123;// 如果p为-1，则表示不匹配node_modules</span><br><span class="line">     if (nmChars[p] === code) &#123;//匹配的时候，统计匹配的字符数</span><br><span class="line">        ++p;</span><br><span class="line">     &#125; else &#123;</span><br><span class="line">        p = -1;</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="Module-resolveFilename（解析模块的真实路径）"><a href="#Module-resolveFilename（解析模块的真实路径）" class="headerlink" title="Module._resolveFilename（解析模块的真实路径）"></a>Module._resolveFilename（解析模块的真实路径）</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">NativeModule.canBeRequiredByUsers(request) // 是否内置模块</span><br><span class="line"></span><br><span class="line">//将环境变量中的node_modules路径与Module._nodeModulePaths生成的路径paths合并</span><br><span class="line">Module._resolveLookupPaths </span><br><span class="line"></span><br><span class="line">Module._findPath // 在paths中解析模块的真实路径</span><br></pre></td></tr></table></figure>
+
+<h5 id="Module-findPath"><a href="#Module-findPath" class="headerlink" title="Module._findPath"></a>Module._findPath</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//通过&#x27;\x00&#x27;生成一个缓存key，可通过cacheKey.split(&#x27;\x00&#x27;)将他重新拆分为数组</span><br><span class="line">const cacheKey = request + &#x27;\x00&#x27; +</span><br><span class="line">                (paths.length === 1 ? paths[0] : paths.join(&#x27;\x00&#x27;));</span><br><span class="line">// 查找缓存</span><br><span class="line">const entry = Module._pathCache[cacheKey];</span><br><span class="line">if (entry)</span><br><span class="line">  return entry;</span><br><span class="line"></span><br><span class="line">//文件存在</span><br><span class="line">//调用toRealPath生成真实的文件路径</span><br></pre></td></tr></table></figure>
+
+<h5 id="toRealPath"><a href="#toRealPath" class="headerlink" title="toRealPath"></a>toRealPath</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">fs.realpathSync</span><br><span class="line">具体流程：</span><br><span class="line">查询缓存</span><br><span class="line">路径中是否存在/</span><br><span class="line">是否为软连接</span><br><span class="line">查询真实路径</span><br><span class="line">缓存软连接文件</span><br><span class="line">缓存当前路径和真实路径的映射</span><br><span class="line"></span><br><span class="line">会循环查找，直到确保真实路径不是软连接为止</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">/(?:^|\/)\.?\.$/</span><br><span class="line"></span><br><span class="line">. 匹配任意字符串</span><br><span class="line">\. 匹配点</span><br><span class="line">? 匹配0个或一个字符</span><br><span class="line">/\.?\./ 匹配两个点</span><br><span class="line">/\.?\.$/ 结尾处匹配点</span><br><span class="line">() 表示需要返回匹配结果</span><br><span class="line">?: 非匹配分组，不把分组分内容显示出来</span><br><span class="line">[^\.] 不匹配点</span><br><span class="line">/^\./ 匹配一个点</span><br><span class="line">/^/ 匹配一个空格</span><br><span class="line">/^|\//匹配空格或者/</span><br></pre></td></tr></table></figure>
+
+<h6 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">require(&#x27;.&#x27;) //等价于require(&#x27;./index.js&#x27;)</span><br><span class="line">path.resolve 主要将两个相对的路径结合，相当于cd，可以把“.”变为相对路径</span><br><span class="line">path.join 合并两个路径</span><br><span class="line">path.dirname 文件的文件夹路径</span><br><span class="line">fs.exists已经弃用  fs.accessSync path-exists库</span><br><span class="line">&#x27;/xxx/yy&#x27;.indexOf(&#x27;/&#x27;, i) // 第i个/</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2021/06/05/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">动态规划</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;Comments</i>
+    </div>
+    
+
+        
+            
+    <div class="valine-container">
+        <script 
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script >
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: '3MyIPEanA2E2vC8is5y5k0oO-gzGzoHsz',
+                    appKey: 'azGXijmXVGb94Xw1QS2qUYgr',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: '😜 尽情吐槽吧~',
+                    lang: 'zh'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+                        let author = '清风';
+
+                        if (author) {
+                            for (let vcard of vcards) {
+                                const vnick_dom = vcard.querySelector('.vhead .vnick');
+                                const vnick = vnick_dom.innerHTML;
+                                if (vnick === author) {
+                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                                }
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('false') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">清风</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.3</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+
+
+
+<div class="post-scripts">
+    
+</div>
+
+
+
+</body>
+</html>
